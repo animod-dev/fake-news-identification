@@ -4,7 +4,7 @@ A machine-learning project that classifies news articles as **real** or **fake**
 
 The repository includes both a Python script and a Jupyter Notebook so the workflow can be run as a script or explored step by step.
 
-## Table of Contents
+## Contents
 
 - [Overview](#overview)
 - [How It Works](#how-it-works)
