@@ -1,6 +1,56 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+"""
+Fake News Prediction Using Machine Learning.
+
+This script implements a machine learning pipeline to classify news articles
+as real or fake using Natural Language Processing (NLP) and Logistic Regression.
+
+The script performs the following operations:
+    1. Loads the news dataset from a CSV file using Pandas.
+    2. Inspects the dataset and handles missing values.
+    3. Combines the author names and news titles into a single text feature.
+    4. Preprocesses the text by removing non-alphabetic characters,
+       converting text to lowercase, removing English stopwords, and applying
+       Porter stemming.
+    5. Converts the preprocessed text into numerical feature vectors using
+       TF-IDF (Term Frequency-Inverse Document Frequency).
+    6. Splits the dataset into training and testing sets using stratified
+       sampling.
+    7. Trains a Logistic Regression classification model.
+    8. Evaluates the model using training and testing accuracy scores.
+    9. Predicts whether a sample news article is real or fake and compares
+       the prediction with its actual label.
+
+Dataset Requirements:
+    The CSV dataset must contain the following columns:
+        - author: Author of the news article.
+        - title: Title of the news article.
+        - text: Article body, which may be incomplete (not used in the
+          current feature-generation process).
+        - label: Target class, where 0 represents real news and 1 represents
+          fake news.
+
+Dependencies:
+    - NumPy
+    - Pandas
+    - NLTK
+    - Scikit-learn
+    - Matplotlib
+
+Note:
+    The dataset is currently loaded using a hard-coded local file path,
+    which must be updated to match the execution environment. The TF-IDF
+    vectorizer is fitted before the train-test split in the current
+    implementation, which may introduce data leakage and inflate evaluation
+    results. This model identifies patterns in the supplied dataset and
+    should not be treated as a definitive fact-checking system.
+
+Author:
+    Anish Moodi
+"""
+
 # ### Title - Fake News Prediction using Machine Learning
 # 
 # #### From: Anish Moodi
