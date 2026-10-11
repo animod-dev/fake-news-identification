@@ -82,66 +82,6 @@ The code uses the `author`, `title`, and `label` columns. The `text` and `id` co
 
 The dataset is not included in this repository; download it from its source and follow the source's terms of use.
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.10 or later is recommended.
-- `pip` for installing Python packages.
-- The `train.csv` dataset described above.
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/anmo-02/fake-news-identification.git
-cd fake-news-identification
-```
-
-### 2. Create and activate a virtual environment (recommended)
-
-**Windows (PowerShell):**
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
-
-**macOS / Linux:**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-python -m pip install --upgrade pip
-pip install numpy pandas nltk scikit-learn matplotlib jupyter
-```
-
-### 4. Download NLTK stopwords
-
-The code accesses the NLTK English stopwords corpus. Download it once in your environment:
-
-```bash
-python -m nltk.downloader stopwords
-```
-
-### 5. Configure the dataset path
-
-The current script and notebook contain a machine-specific Windows path similar to:
-
-```python
-news_dataset = pd.read_csv(r'C:\Users\msani\Downloads\train.csv')
-```
-
-Change that line in **both** `fake-news-identification.py` and `fake-news-identification.ipynb` to point to the location of your downloaded dataset. If `train.csv` is in the repository directory, use:
-
-```python
-news_dataset = pd.read_csv("train.csv")
-```
-
 ## Running the Project
 
 ### Option A: Run the Python script
@@ -173,7 +113,7 @@ The saved notebook output reports the following accuracy values:
 | Training set | 98.49% |
 | Test set | 97.12% |
 
-These numbers are the outputs stored in the notebook, not a guarantee of performance on new data. Results can differ when the dataset, package versions, or implementation changes. See [Limitations and Notes](#limitations-and-notes), especially the note about fitting TF-IDF before splitting the data.
+These numbers are the outputs stored in the notebook, not a guarantee of performance on new data. Results can differ when the dataset, package versions, or implementation changes. 
 
 ## Project Structure
 
@@ -186,24 +126,6 @@ fake-news-identification/
 
 `train.csv` must be downloaded separately and placed in the project directory (or referenced by an updated path).
 
-## Limitations and Notes
-
-- **Uses headlines and author names only.** The model does not analyse the article body, source reputation, cited evidence, or corroborating reports.
-- **Potential data leakage in the current implementation.** `TfidfVectorizer` is fitted on the full dataset before the train/test split. This allows information from the test set to influence the vocabulary/IDF statistics and can make the reported test score optimistic. For a more reliable evaluation, split the raw text first and fit the vectorizer on the training text only, ideally by using a scikit-learn `Pipeline`.
-- **The prediction example is fixed to a test sample.** The existing code predicts `X_test[3]`; it does not currently provide a function or command-line interface for entering an arbitrary news headline.
-- **Accuracy is only one metric.** Precision, recall, F1-score, a confusion matrix, and evaluation on a separate dataset would provide a more complete picture.
-- **This is a classification demonstration, not a fact-checking service.** A model prediction is not proof that a claim is true or false. Verify important claims using trustworthy, independent sources.
-
-## Possible Improvements
-
-- Fit TF-IDF only on the training split to prevent data leakage.
-- Use a reusable preprocessing and prediction function that accepts new headlines or article text.
-- Compare headline-only features with headline-plus-body features.
-- Evaluate with precision, recall, F1-score, and a confusion matrix.
-- Try alternative models and tune hyperparameters using cross-validation.
-- Save the trained model and vectorizer for reuse without retraining each time.
-- Add input validation, a dependency file, and automated tests.
-
 ## Dataset Attribution
 
-The project is intended to use the [Kaggle Fake News competition dataset](https://www.kaggle.com/competitions/fake-news/data?select=train.csv). Please review and comply with Kaggle's applicable terms and dataset conditions. No separate software license is specified here; add a `LICENSE` file if you intend to publish the project under a particular open-source license.
+The project is intended to use the [Kaggle Fake News competition dataset](https://www.kaggle.com/competitions/fake-news/data?select=train.csv). Please review and comply with Kaggle's applicable terms and dataset conditions.
