@@ -14,8 +14,6 @@ The repository includes both a Python script and a Jupyter Notebook so the workf
 - [Running the Project](#running-the-project)
 - [Results](#results)
 - [Project Structure](#project-structure)
-- [Limitations and Notes](#limitations-and-notes)
-- [Possible Improvements](#possible-improvements)
 - [Dataset Attribution](#dataset-attribution)
 
 ## Overview
